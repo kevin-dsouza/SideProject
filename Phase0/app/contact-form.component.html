@@ -1,4 +1,4 @@
-<form class="form-horizontal">
+<form class="form-horizontal" [ngFormModel]="form">
     <div class="form-inline">
         <label for="emailField"> Email</label>
         <input id="emailField" type="email" class="form-control" placeholder="Email">
@@ -8,8 +8,12 @@
 
         <div class="input-group">
 
-            <input id="emailField" type="email" class="form-control" placeholder="Email">
+            <input id="emailField" type="email" class="form-control" placeholder="Email" [ngFormControl]="email" 
+            [class.err]
+            >
             <div class="input-group-addon">@gmail.com</div>
+            <div *ngIf="!email.valid && email.touched"  
+           class="ui error message">email is invalid</div> 
         </div>
     </div>
 </form>
